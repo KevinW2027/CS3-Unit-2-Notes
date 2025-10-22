@@ -32,5 +32,21 @@ print(df) #Has column headings
 
 # Load tabular data from a csv file into a dataframe
 pokemon_df = pd.read_csv('pokemon_data.csv')
-print(pokemon_df.columns)
 print(pokemon_df['Name'])
+print(pokemon_df.HP)
+print(pokemon_df['Type 1'])
+#Fill value with calculation
+pokemon_df['Attack Ratio'] = pokemon_df['Attack'] / pokemon_df['Sp. Atk']
+
+print(pokemon_df.head()) # Show first n rows
+print(pokemon_df.sample(3))
+print(pokemon_df.shape)
+print(pokemon_df.columns) # list of column headers
+print(pokemon_df.info()) # shows non_null count & dtypes
+print(pokemon_df.describe())
+
+print(pokemon_df['Type 1'].value_counts())#frequency of value counts
+print(pokemon_df.loc[4])
+#groupby function helps you isolate group of entries
+print(pokemon_df.groupby('Type 1')[['HP','Speed']].mean() )
+print( pokemon_df.groupby('Type 1').size().sort_values(ascending=False))
